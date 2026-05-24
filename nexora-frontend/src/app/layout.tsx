@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next';
+import TopNav from '@/components/TopNav';
+import Sidebar from '@/components/Sidebar';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,7 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className="bg-background text-foreground antialiased">
-        {children}
+        <TopNav />
+        <Sidebar />
+        <main className="ml-20 pt-20">
+          {children}
+        </main>
       </body>
     </html>
   );

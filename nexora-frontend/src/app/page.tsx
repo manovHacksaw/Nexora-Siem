@@ -1,15 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Header from '@/components/Header';
-import AlertStats from '@/components/AlertStats';
-import LiveTicker from '@/components/LiveTicker';
-import AlertCharts from '@/components/AlertCharts';
+import KPICards from '@/components/KPICards';
+import ThreatActivityTimeline from '@/components/ThreatActivityTimeline';
+import LoginFailureHeatmap from '@/components/LoginFailureHeatmap';
+import ThreatSeverityGauge from '@/components/ThreatSeverityGauge';
+import LiveEventStream from '@/components/LiveEventStream';
+import HuntConsole from '@/components/HuntConsole';
+import MitreMatrix from '@/components/MitreMatrix';
+import IOCFeedsTable from '@/components/IOCFeedsTable';
+import AttackChainFlow from '@/components/AttackChainFlow';
 import RecentAlerts from '@/components/RecentAlerts';
-import ThreatHunt from '@/components/ThreatHunt';
-import MitrePanel from '@/components/MitrePanel';
-import CorrelationPanel from '@/components/CorrelationPanel';
-import ThreatIntelPanel from '@/components/ThreatIntelPanel';
 import AlertModal from '@/components/AlertModal';
 import { Alert } from '@/types/alert';
 
@@ -79,32 +80,37 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <LiveTicker alerts={alerts} />
+      <div className="px-6 py-6 space-y-6">
+        {/* KPI Cards Section */}
+        <KPICards alerts={alerts} />
 
-      {/* Main content */}
-      <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* Alert Statistics */}
-        <AlertStats alerts={alerts} />
+        {/* Analytics Grid - 2 columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="space-y-6">
+            <ThreatActivityTimeline alerts={alerts} />
+            <LoginFailureHeatmap />
+          </div>
+          <div className="space-y-6">
+            <ThreatSeverityGauge alerts={alerts} />
+            <LiveEventStream alerts={alerts} />
+          </div>
+        </div>
 
-        {/* Charts */}
-        <AlertCharts alerts={alerts} />
+        {/* Hunt Console - Full Width */}
+        <HuntConsole />
 
-        {/* Threat Hunt */}
-        <ThreatHunt />
+        {/* MITRE Matrix - Full Width */}
+        <MitreMatrix />
 
-        {/* MITRE ATT&CK Mapping */}
-        <MitrePanel alerts={alerts} />
+        {/* IOC Feeds - Full Width */}
+        <IOCFeedsTable />
 
-        {/* Threat Intelligence */}
-        <ThreatIntelPanel alerts={alerts} />
+        {/* Attack Chain Flow - Full Width */}
+        <AttackChainFlow />
 
-        {/* Correlated Attack Chains */}
-        <CorrelationPanel />
-
-        {/* Recent Alerts Table */}
+        {/* Recent Alerts Table - Full Width */}
         <RecentAlerts alerts={alerts} onInvestigate={handleInvestigate} />
-      </main>
+      </div>
 
       {/* Alert Modal */}
       {selectedAlert && (

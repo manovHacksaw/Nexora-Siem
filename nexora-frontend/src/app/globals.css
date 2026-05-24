@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: oklch(7% 0 0);
-  --color-foreground: oklch(95% 0 0);
-  --color-card: oklch(12% 0 0);
-  --color-card-foreground: oklch(95% 0 0);
-  --color-primary: oklch(46% 0.18 213);
-  --color-primary-foreground: oklch(100% 0 0);
-  --color-secondary: oklch(20% 0 0);
-  --color-secondary-foreground: oklch(95% 0 0);
-  --color-accent: oklch(60% 0.2 0);
-  --color-accent-foreground: oklch(100% 0 0);
-  --color-muted: oklch(40% 0 0);
-  --color-muted-foreground: oklch(70% 0 0);
-  --color-destructive: oklch(60% 0.2 0);
-  --color-destructive-foreground: oklch(100% 0 0);
-  --color-border: oklch(20% 0 0);
+  /* Enterprise SOC Premium Colors */
+  --color-background: #081120;
+  --color-foreground: #f1f5f9;
+  --color-card: #131d2e;
+  --color-card-foreground: #e2e8f0;
+  --color-primary: #38bdf8;
+  --color-primary-foreground: #081120;
+  --color-secondary: #0f172a;
+  --color-secondary-foreground: #cbd5e1;
+  --color-accent: #2563eb;
+  --color-accent-foreground: #f8fafc;
+  --color-muted: #475569;
+  --color-muted-foreground: #94a3b8;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
+  --color-border: #1e293b;
   --radius: 0.5rem;
 
-  --color-warning: oklch(50% 0.2 38);
-  --color-success: oklch(29% 0.1 142);
-  --color-info: oklch(48% 0.2 199);
+  /* SOC-specific colors */
+  --color-threat-high: #ef4444;
+  --color-threat-medium: #f59e0b;
+  --color-threat-low: #3b82f6;
+  --color-success-indicator: #22c55e;
+  --color-warning-indicator: #f59e0b;
 }
 
 @layer base {
@@ -40,16 +44,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--card));
+  background: #131d2e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
+  background: #1e293b;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted));
+  background: #475569;
 }
 
 /* Utility classes for severity levels */
