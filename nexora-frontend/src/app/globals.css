@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium SaaS Color System - Modern & Clean */
+  --color-background: #fafbfc;
+  --color-foreground: #0f1419;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f1419;
+  --color-primary: #0066cc;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3f4f6;
+  --color-secondary-foreground: #1f2937;
+  --color-accent: #0066cc;
+  --color-accent-foreground: #ffffff;
+  --color-muted: #9ca3af;
+  --color-muted-foreground: #6b7280;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e7eb;
+  --radius: 0.625rem;
+
+  /* SOC-specific colors - refined palette */
+  --color-threat-high: #dc2626;
+  --color-threat-medium: #d97706;
+  --color-threat-low: #0066cc;
+  --color-success-indicator: #059669;
+  --color-warning-indicator: #d97706;
+  
+  /* Additional semantic colors */
+  --color-info: #0066cc;
+  --color-surface: #f9fafb;
+  --color-surface-secondary: #f3f4f6;
+}
+
+@layer base {
+  html {
+    @apply bg-background scroll-smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Refined typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-foreground;
+  }
+
+  /* Focus styles for better accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    @apply outline-none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1), 0 0 0 2px #ffffff;
+  }
+}
+
+/* Clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Refined severity badges */
+.severity-high {
+  @apply bg-red-50 text-red-700 border border-red-200;
+}
+
+.severity-medium {
+  @apply bg-amber-50 text-amber-700 border border-amber-200;
+}
+
+.severity-low {
+  @apply bg-blue-50 text-blue-700 border border-blue-200;
+}
+
+.severity-info {
+  @apply bg-cyan-50 text-cyan-700 border border-cyan-200;
+}
+
+/* Subtle glow effects */
+.glow-alert {
+  @apply shadow-sm shadow-red-500/10;
+}
+
+.glow-warning {
+  @apply shadow-sm shadow-amber-500/10;
+}
+
+.glow-info {
+  @apply shadow-sm shadow-blue-500/10;
+}
+
+/* Card styles with refined shadows */
+.card {
+  @apply bg-card border border-border rounded-[var(--radius)] shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.card-elevated {
+  @apply bg-card border border-border rounded-[var(--radius)] shadow-md hover:shadow-lg transition-shadow duration-200;
+}
+
+/* Smooth transitions */
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle hover effects */
+  .hover-lift {
+    @apply hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  /* Focus states */
+  .focus-ring {
+    @apply focus:outline-none;
+  }
+  
+  .focus-ring:focus {
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1), 0 0 0 2px #ffffff;
+  }
+}
