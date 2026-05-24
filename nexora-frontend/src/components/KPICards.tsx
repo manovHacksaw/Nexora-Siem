@@ -86,27 +86,27 @@ export default function KPICards({ alerts = [] }: KPICardsProps) {
       {kpis.map((kpi, index) => (
         <div
           key={index}
-          className="bg-card border border-border rounded-lg p-4 hover:border-primary/50 transition-all duration-300 group"
+          className="bg-card border border-border rounded-[var(--radius)] p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
         >
-          <div className="flex items-start justify-between mb-3">
-            <div className={`p-2 rounded-lg bg-card-foreground/10 ${kpi.color}`}>{kpi.icon}</div>
-            <div className="flex items-center gap-1 text-xs font-semibold">
+          <div className="flex items-start justify-between mb-4">
+            <div className={`p-2.5 rounded-lg bg-secondary ${kpi.color}`}>{kpi.icon}</div>
+            <div className="flex items-center gap-1.5 text-xs font-semibold">
               {getTrendIcon(kpi.change)}
               <span className={kpi.change >= 0 ? 'text-threat-medium' : 'text-success-indicator'}>
                 {Math.abs(kpi.change)}%
               </span>
             </div>
           </div>
-          <div className="mb-2">
-            <div className="text-2xl font-bold text-foreground">{kpi.value.toLocaleString()}</div>
-            <div className="text-xs text-muted-foreground">{kpi.label}</div>
+          <div className="mb-4">
+            <div className="text-3xl font-semibold text-foreground">{kpi.value.toLocaleString()}</div>
+            <div className="text-sm text-muted-foreground mt-1">{kpi.label}</div>
           </div>
           {/* Mini sparkline placeholder */}
-          <div className="h-8 flex items-end gap-1 opacity-40 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="h-7 flex items-end gap-0.5 opacity-50 group-hover:opacity-70 transition-opacity duration-300">
             {Array.from({ length: 12 }).map((_, i) => (
               <div
                 key={i}
-                className="flex-1 bg-primary/40 rounded-sm"
+                className="flex-1 bg-primary/30 rounded-sm"
                 style={{ height: `${Math.random() * 100}%` }}
               ></div>
             ))}
