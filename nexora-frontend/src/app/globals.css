@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(7% 0 0);
+  --color-foreground: oklch(95% 0 0);
+  --color-card: oklch(12% 0 0);
+  --color-card-foreground: oklch(95% 0 0);
+  --color-primary: oklch(46% 0.18 213);
+  --color-primary-foreground: oklch(100% 0 0);
+  --color-secondary: oklch(20% 0 0);
+  --color-secondary-foreground: oklch(95% 0 0);
+  --color-accent: oklch(60% 0.2 0);
+  --color-accent-foreground: oklch(100% 0 0);
+  --color-muted: oklch(40% 0 0);
+  --color-muted-foreground: oklch(70% 0 0);
+  --color-destructive: oklch(60% 0.2 0);
+  --color-destructive-foreground: oklch(100% 0 0);
+  --color-border: oklch(20% 0 0);
+  --radius: 0.5rem;
+
+  --color-warning: oklch(50% 0.2 38);
+  --color-success: oklch(29% 0.1 142);
+  --color-info: oklch(48% 0.2 199);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply bg-background;
+  }
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--card));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted));
+}
+
+/* Utility classes for severity levels */
+.severity-high {
+  @apply bg-red-900/20 text-red-400 border border-red-700/50;
+}
+
+.severity-medium {
+  @apply bg-yellow-900/20 text-yellow-400 border border-yellow-700/50;
+}
+
+.severity-low {
+  @apply bg-blue-900/20 text-blue-400 border border-blue-700/50;
+}
+
+.severity-info {
+  @apply bg-cyan-900/20 text-cyan-400 border border-cyan-700/50;
+}
+
+/* Glow effect for alerts */
+.glow-alert {
+  @apply shadow-lg shadow-red-500/20;
+}
+
+.glow-warning {
+  @apply shadow-lg shadow-yellow-500/20;
+}
+
+.glow-info {
+  @apply shadow-lg shadow-blue-500/20;
+}
+
+/* Animated gradient border */
+.border-gradient {
+  @apply relative border border-transparent bg-clip-padding;
+  background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--card))) padding-box,
+    linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))) border-box;
+}
+
+/* Smooth transitions */
+@layer utilities {
+  .transition-all-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
